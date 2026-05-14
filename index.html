@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>地域クリエイターを育成｜XX Creative Hub｜合同会社 Ibu-Ibu</title>
+  <meta name="description" content="住民が「地元を発信するクリエイター」になる仕組みづくり。自治体ご担当者様向け事業ご案内（合同会社 Ibu-Ibu）" />
+  <style>
+    :root {
+      --bg:        #F8F4ED;
+      --card:      #FFFBF4;
+      --pink:      #F4E0D9;
+      --pink-d:    #E2C2B7;
+      --blue:      #DBE2E8;
+      --blue-d:    #5E7A91;
+      --sage:      #DEE3D2;
+      --sage-d:    #6F8852;
+      --yellow:    #F5EAC8;
+      --coral:     #EFD7C5;
+      --beige:     #E8E0D5;
+      --navy:      #3A3D4A;
+      --gray:      #6B6B73;
+      --accent:    #B06E6A;
+      --white:     #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "メイリオ", "Meiryo", "Hiragino Sans", "ヒラギノ角ゴ ProN", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+
+    /* ── Top accent bar ────────────────────────────── */
+    .topbar {
+      height: 6px;
+      background: var(--accent);
+    }
+
+    /* ── Header / Nav ──────────────────────────────── */
+    header {
+      background: var(--bg);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .brand {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+    .for-tag {
+      background: var(--navy);
+      color: var(--white);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* ── Hero ──────────────────────────────────────── */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+    .hero h1 {
+      text-align: center;
+      line-height: 1.25;
+      margin: 0 0 28px;
+      letter-spacing: 0.01em;
+    }
+    .hero h1 .kicker {
+      display: block;
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .hero h1 .main {
+      display: block;
+      font-size: clamp(34px, 6vw, 64px);
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+    }
+    .hero h1 .main .xx {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .hero .catch {
+      background: var(--yellow);
+      border-radius: 14px;
+      padding: 24px 28px;
+      text-align: center;
+      font-weight: 700;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.7;
+    }
+    .hero .lead {
+      margin-top: 28px;
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 800px;
+    }
+
+    /* ── Section common ─────────────────────────────── */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+    .section-label {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      margin: 0 0 28px;
+      line-height: 1.4;
+    }
+
+    /* ── 3 merit cards ──────────────────────────────── */
+    .merits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 720px) {
+      .merits { grid-template-columns: 1fr; }
+    }
+    .merit-card {
+      border-radius: 14px;
+      padding: 26px;
+    }
+    .merit-card.c1 { background: var(--pink); }
+    .merit-card.c2 { background: var(--blue); }
+    .merit-card.c3 { background: var(--sage); }
+    .merit-card .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .merit-card.c1 .dot { background: var(--pink-d); }
+    .merit-card.c2 .dot { background: var(--blue-d); }
+    .merit-card.c3 .dot { background: var(--sage-d); }
+    .merit-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    .merit-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* ── 3 mechanisms ──────────────────────────────── */
+    .mechs {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .mech {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 28px 28px 28px 0;
+      display: grid;
+      grid-template-columns: 8px 90px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      overflow: hidden;
+    }
+    .mech .band { width: 8px; height: 100%; align-self: stretch; }
+    .mech.m1 .band { background: var(--accent); }
+    .mech.m2 .band { background: var(--blue-d); }
+    .mech.m3 .band { background: var(--sage-d); }
+    .mech .num {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 24px;
+      margin: 0 auto;
+    }
+    .mech.m1 .num { background: var(--accent); }
+    .mech.m2 .num { background: var(--blue-d); }
+    .mech.m3 .num { background: var(--sage-d); }
+    .mech .text h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+    }
+    .mech .text p {
+      margin: 0;
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--navy);
+    }
+    .mech .tag {
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .mech.m1 .tag { background: var(--pink); }
+    .mech.m2 .tag { background: var(--blue); }
+    .mech.m3 .tag { background: var(--sage); }
+    @media (max-width: 720px) {
+      .mech {
+        grid-template-columns: 8px 1fr;
+        padding: 22px 22px 22px 0;
+        gap: 14px;
+      }
+      .mech .num { margin: 0 0 0 14px; }
+      .mech .tag { justify-self: start; margin-left: 22px; }
+      .mech .text { grid-column: 2; }
+    }
+
+    /* ── EBINA case ─────────────────────────────────── */
+    .case {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .case .badge {
+      background: var(--beige);
+      padding: 32px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .case .badge .b1 { font-size: 30px; font-weight: 700; letter-spacing: 0.04em; }
+    .case .badge .b2 { font-size: 18px; font-weight: 700; margin-top: 2px; }
+    .case .badge .b3 { font-size: 13px; color: var(--gray); margin-top: 8px; letter-spacing: 0.4em; }
+    .case .badge .b4 {
+      margin-top: 16px;
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .case .details {
+      padding: 32px;
+    }
+    .case .row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--beige);
+      font-size: 15px;
+    }
+    .case .row:last-child { border-bottom: none; }
+    .case .row .k {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    @media (max-width: 720px) {
+      .case { grid-template-columns: 1fr; }
+      .case .details { padding: 24px; }
+    }
+
+    /* ── CTA ────────────────────────────────────────── */
+    .cta {
+      background: var(--coral);
+      border-radius: 14px;
+      padding: 40px 28px;
+      text-align: center;
+    }
+    .cta h2 {
+      margin: 0 0 12px;
+      font-size: clamp(20px, 2.5vw, 26px);
+    }
+    .cta p {
+      margin: 0 auto 22px;
+      max-width: 640px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .cta .btn {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      padding: 16px 38px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .cta .btn:hover { transform: translateY(-2px); opacity: 0.92; }
+    .cta .note { font-size: 12px; color: var(--gray); margin-top: 12px; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      padding: 36px 24px;
+      margin-top: 60px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .footer-inner .left .name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .footer-inner .left .meta {
+      color: var(--beige);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .footer-inner .left .desc {
+      color: var(--beige);
+      font-size: 12px;
+      margin-top: 8px;
+      opacity: 0.85;
+    }
+    .footer-inner .right {
+      background: var(--white);
+      color: var(--navy);
+      padding: 16px 22px;
+      border-radius: 12px;
+      text-align: center;
+      min-width: 280px;
+    }
+    .footer-inner .right .label {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    .footer-inner .right .mail {
+      font-size: 17px;
+      font-weight: 700;
+      margin-top: 4px;
+      word-break: break-all;
+    }
+    .footer-inner .right .sub {
+      color: var(--gray);
+      font-size: 11px;
+      margin-top: 2px;
+    }
+    @media (max-width: 720px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-inner .right { min-width: 0; }
+    }
+    .copyright {
+      max-width: 1100px;
+      margin: 24px auto 0;
+      font-size: 11px;
+      color: var(--beige);
+      opacity: 0.7;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar"></div>
+
+  <header>
+    <div class="brand">合同会社 Ibu-Ibu</div>
+    <div class="for-tag">自治体ご担当者様向け</div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>
+      <span class="kicker">地域クリエイターを育成</span>
+      <span class="main"><span class="xx">XX</span> Creative Hub</span>
+    </h1>
+
+    <div class="catch">
+      「地元を一番知っている住民」を、<br />
+      「地元を発信するクリエイター」に育てます。
+    </div>
+
+    <p class="lead">
+      ワークショップ・地元ファンアカウントの運営・編集会議・案件振り分けまでをワンセットでご提供。
+      <br />
+      "続けられて、育っていく" 地域クリエイターコミュニティを、貴自治体エリアにも。
+    </p>
+  </div>
+
+  <!-- 自治体価値 -->
+  <section>
+    <div class="section-label">VALUE FOR MUNICIPALITY</div>
+    <h2 class="section-title">自治体にとっての価値</h2>
+    <div class="merits">
+      <div class="merit-card c1">
+        <span class="dot"></span>
+        <h3>住民活躍の場づくり</h3>
+        <p>地元の魅力を発信する「住民クリエイター」を育成。副業・複業の選択肢として、地域人材の活躍の場をつくります。</p>
+      </div>
+      <div class="merit-card c2">
+        <span class="dot"></span>
+        <h3>関係人口・シビックプライド</h3>
+        <p>住民自身が発信するリアルな魅力で、外からのファンと関係人口を獲得。住民の街への誇りも育てます。</p>
+      </div>
+      <div class="merit-card c3">
+        <span class="dot"></span>
+        <h3>地域経済の循環</h3>
+        <p>地元の制作案件を地元のクリエイターへ。外注費が域外に流れない、地域内でお金が回る仕組みづくり。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3つの仕組み -->
+  <section>
+    <div class="section-label">HOW IT WORKS</div>
+    <h2 class="section-title">続ける・育てる 3つの仕組み</h2>
+
+    <div class="mechs">
+      <div class="mech m1">
+        <div class="band"></div>
+        <div class="num">1</div>
+        <div class="text">
+          <h3>地元ファンアカウントを実地で運営</h3>
+          <p>ワークショップ内で「ご当地ファンアカウント（非公式）」を立ち上げ。受講者が運営し、生きた市場のフィードバックを受けながら発信スキルを磨きます。</p>
+        </div>
+        <div class="tag">実践型 ・ OJT</div>
+      </div>
+
+      <div class="mech m2">
+        <div class="band"></div>
+        <div class="num">2</div>
+        <div class="text">
+          <h3>続く・広がる仕組み</h3>
+          <p>特に駆け出しの人は一人だと挫折しやすい所、仲間と編集会議を行い、地元の魅力を発信するコンテンツを企画。続けられる仕組みでコミュニティ化していきます。</p>
+        </div>
+        <div class="tag">継続性 ・ コミュニティ</div>
+      </div>
+
+      <div class="mech m3">
+        <div class="band"></div>
+        <div class="num">3</div>
+        <div class="text">
+          <h3>クリエイターが苦手な営業に強み！案件に繋げます</h3>
+          <p>代表が営業、そして裏側にはプロ制作会社（提携パートナー）がおり、難易度に応じて受け皿を変えられ、発注側も安心です。</p>
+        </div>
+        <div class="tag">収益化 ・ 域内循環</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 海老名 CASE -->
+  <section>
+    <div class="section-label">CASE 01</div>
+    <h2 class="section-title">第1弾 海老名市での取り組み</h2>
+
+    <div class="case">
+      <div class="badge">
+        <div class="b1">EBINA</div>
+        <div class="b2">CREATIVE HUB</div>
+        <div class="b3">2 0 2 6</div>
+        <div class="b4">全 3 回 ワークショップ</div>
+      </div>
+      <div class="details">
+        <div class="row">
+          <div class="k">● 開催期間</div>
+          <div>2026年 5月 〜 6月（計3回）</div>
+        </div>
+        <div class="row">
+          <div class="k">● 会場</div>
+          <div>海老名市</div>
+        </div>
+        <div class="row">
+          <div class="k">● 対象</div>
+          <div>海老名エリア在住の地元クリエイター志望者</div>
+        </div>
+        <div class="row">
+          <div class="k">● 内容</div>
+          <div>AI / SNS / 映像 を使った発信スキル習得＋海老名ファンアカウントの実地運営</div>
+        </div>
+        <div class="row">
+          <div class="k">● 連携先</div>
+          <div>地元店舗・公園・教育機関等とのパートナーシップを順次拡大中</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="cta">
+      <h2>一緒に「地域発信のかたち」をつくりませんか？</h2>
+      <p>
+        市民向け講座・観光プロモーション・地域ブランディング案件など、<br />
+        貴自治体の課題に合わせたカスタマイズが可能です。お気軽にご相談ください。
+      </p>
+      <a class="btn" href="mailto:s.igata@ibu-ibu.com?subject=【自治体お問い合わせ】Ibu-Ibu 地域クリエイター育成事業について">
+        メールでお問い合わせ
+      </a>
+      <div class="note">（s.igata@ibu-ibu.com まで直接お送りいただいても結構です）</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="left">
+        <div class="name">合同会社 Ibu-Ibu</div>
+        <div class="meta">代表 井形 彩（いがた さやか）</div>
+        <div class="desc">AI / SNS / 映像 を活用した地域クリエイター育成事業</div>
+      </div>
+      <div class="right">
+        <div class="label">CONTACT</div>
+        <div class="mail">s.igata@ibu-ibu.com</div>
+        <div class="sub">（代表メール直通）</div>
+      </div>
+    </div>
+    <div class="copyright">© Ibu-Ibu LLC. All rights reserved.</div>
+  </footer>
+</body>
+</html>
