@@ -1,547 +1,218 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>地域クリエイターを育成｜XX Creative Hub｜合同会社 Ibu-Ibu</title>
-  <meta name="description" content="住民が「地元を発信するクリエイター」になる仕組みづくり。自治体ご担当者様向け事業ご案内（合同会社 Ibu-Ibu）" />
-  <style>
-    :root {
-      --bg:        #F8F4ED;
-      --card:      #FFFBF4;
-      --pink:      #F4E0D9;
-      --pink-d:    #E2C2B7;
-      --blue:      #DBE2E8;
-      --blue-d:    #5E7A91;
-      --sage:      #DEE3D2;
-      --sage-d:    #6F8852;
-      --yellow:    #F5EAC8;
-      --coral:     #EFD7C5;
-      --beige:     #E8E0D5;
-      --navy:      #3A3D4A;
-      --gray:      #6B6B73;
-      --accent:    #B06E6A;
-      --white:     #ffffff;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: "メイリオ", "Meiryo", "Hiragino Sans", "ヒラギノ角ゴ ProN", system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--navy);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合同会社Ibu-Ibu｜AIと発信で、地域に挑戦を増やす。</title>
+  <meta name="description" content="自治体・企業のAI活用支援と、地域の挑戦者を育てるクリエイティブハブ。「むずかしそう」を「やってみよう」に変える、最初の一歩の伴走者です。">
 
-    /* ── Top accent bar ────────────────────────────── */
-    .topbar {
-      height: 6px;
-      background: var(--accent);
-    }
+  <!-- フォント: Alata（英字見出し）/ Noto Serif JP（和文見出し）/ Noto Sans JP（本文） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
 
-    /* ── Header / Nav ──────────────────────────────── */
-    header {
-      background: var(--bg);
-      padding: 18px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .brand {
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 14px;
-      letter-spacing: 0.04em;
-    }
-    .for-tag {
-      background: var(--navy);
-      color: var(--white);
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* ── Hero ──────────────────────────────────────── */
-    .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 24px 60px;
-    }
-    .hero h1 {
-      text-align: center;
-      line-height: 1.25;
-      margin: 0 0 28px;
-      letter-spacing: 0.01em;
-    }
-    .hero h1 .kicker {
-      display: block;
-      font-size: clamp(16px, 2vw, 22px);
-      font-weight: 400;
-      color: var(--navy);
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
-    }
-    .hero h1 .main {
-      display: block;
-      font-size: clamp(34px, 6vw, 64px);
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: 0.01em;
-    }
-    .hero h1 .main .xx {
-      color: var(--accent);
-      font-style: italic;
-    }
-    .hero .catch {
-      background: var(--yellow);
-      border-radius: 14px;
-      padding: 24px 28px;
-      text-align: center;
-      font-weight: 700;
-      font-size: clamp(16px, 2vw, 20px);
-      line-height: 1.7;
-    }
-    .hero .lead {
-      margin-top: 28px;
-      font-size: 16px;
-      color: var(--gray);
-      max-width: 800px;
-    }
-
-    /* ── Section common ─────────────────────────────── */
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 56px 24px;
-    }
-    .section-label {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-    .section-title {
-      font-size: clamp(22px, 3vw, 30px);
-      font-weight: 700;
-      margin: 0 0 28px;
-      line-height: 1.4;
-    }
-
-    /* ── 3 merit cards ──────────────────────────────── */
-    .merits {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    @media (max-width: 720px) {
-      .merits { grid-template-columns: 1fr; }
-    }
-    .merit-card {
-      border-radius: 14px;
-      padding: 26px;
-    }
-    .merit-card.c1 { background: var(--pink); }
-    .merit-card.c2 { background: var(--blue); }
-    .merit-card.c3 { background: var(--sage); }
-    .merit-card .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      display: inline-block;
-      margin-bottom: 14px;
-    }
-    .merit-card.c1 .dot { background: var(--pink-d); }
-    .merit-card.c2 .dot { background: var(--blue-d); }
-    .merit-card.c3 .dot { background: var(--sage-d); }
-    .merit-card h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-    .merit-card p {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.75;
-    }
-
-    /* ── 3 mechanisms ──────────────────────────────── */
-    .mechs {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .mech {
-      background: var(--card);
-      border-radius: 14px;
-      padding: 28px 28px 28px 0;
-      display: grid;
-      grid-template-columns: 8px 90px 1fr auto;
-      gap: 18px;
-      align-items: center;
-      overflow: hidden;
-    }
-    .mech .band { width: 8px; height: 100%; align-self: stretch; }
-    .mech.m1 .band { background: var(--accent); }
-    .mech.m2 .band { background: var(--blue-d); }
-    .mech.m3 .band { background: var(--sage-d); }
-    .mech .num {
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 24px;
-      margin: 0 auto;
-    }
-    .mech.m1 .num { background: var(--accent); }
-    .mech.m2 .num { background: var(--blue-d); }
-    .mech.m3 .num { background: var(--sage-d); }
-    .mech .text h3 {
-      margin: 0 0 6px;
-      font-size: 20px;
-    }
-    .mech .text p {
-      margin: 0;
-      font-size: 14.5px;
-      line-height: 1.8;
-      color: var(--navy);
-    }
-    .mech .tag {
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .mech.m1 .tag { background: var(--pink); }
-    .mech.m2 .tag { background: var(--blue); }
-    .mech.m3 .tag { background: var(--sage); }
-    @media (max-width: 720px) {
-      .mech {
-        grid-template-columns: 8px 1fr;
-        padding: 22px 22px 22px 0;
-        gap: 14px;
-      }
-      .mech .num { margin: 0 0 0 14px; }
-      .mech .tag { justify-self: start; margin-left: 22px; }
-      .mech .text { grid-column: 2; }
-    }
-
-    /* ── EBINA case ─────────────────────────────────── */
-    .case {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      background: var(--card);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .case .badge {
-      background: var(--beige);
-      padding: 32px 24px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .case .badge .b1 { font-size: 30px; font-weight: 700; letter-spacing: 0.04em; }
-    .case .badge .b2 { font-size: 18px; font-weight: 700; margin-top: 2px; }
-    .case .badge .b3 { font-size: 13px; color: var(--gray); margin-top: 8px; letter-spacing: 0.4em; }
-    .case .badge .b4 {
-      margin-top: 16px;
-      display: inline-block;
-      background: var(--accent);
-      color: var(--white);
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .case .details {
-      padding: 32px;
-    }
-    .case .row {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 8px;
-      padding: 10px 0;
-      border-bottom: 1px dashed var(--beige);
-      font-size: 15px;
-    }
-    .case .row:last-child { border-bottom: none; }
-    .case .row .k {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 13px;
-    }
-    @media (max-width: 720px) {
-      .case { grid-template-columns: 1fr; }
-      .case .details { padding: 24px; }
-    }
-
-    /* ── CTA ────────────────────────────────────────── */
-    .cta {
-      background: var(--coral);
-      border-radius: 14px;
-      padding: 40px 28px;
-      text-align: center;
-    }
-    .cta h2 {
-      margin: 0 0 12px;
-      font-size: clamp(20px, 2.5vw, 26px);
-    }
-    .cta p {
-      margin: 0 auto 22px;
-      max-width: 640px;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    .cta .btn {
-      display: inline-block;
-      background: var(--navy);
-      color: var(--white);
-      padding: 16px 38px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-    .cta .btn:hover { transform: translateY(-2px); opacity: 0.92; }
-    .cta .note { font-size: 12px; color: var(--gray); margin-top: 12px; }
-
-    /* ── Footer ─────────────────────────────────────── */
-    footer {
-      background: var(--navy);
-      color: var(--white);
-      padding: 36px 24px;
-      margin-top: 60px;
-    }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: center;
-    }
-    .footer-inner .left .name {
-      font-size: 20px;
-      font-weight: 700;
-    }
-    .footer-inner .left .meta {
-      color: var(--beige);
-      font-size: 13px;
-      margin-top: 4px;
-    }
-    .footer-inner .left .desc {
-      color: var(--beige);
-      font-size: 12px;
-      margin-top: 8px;
-      opacity: 0.85;
-    }
-    .footer-inner .right {
-      background: var(--white);
-      color: var(--navy);
-      padding: 16px 22px;
-      border-radius: 12px;
-      text-align: center;
-      min-width: 280px;
-    }
-    .footer-inner .right .label {
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-    }
-    .footer-inner .right .mail {
-      font-size: 17px;
-      font-weight: 700;
-      margin-top: 4px;
-      word-break: break-all;
-    }
-    .footer-inner .right .sub {
-      color: var(--gray);
-      font-size: 11px;
-      margin-top: 2px;
-    }
-    @media (max-width: 720px) {
-      .footer-inner { grid-template-columns: 1fr; }
-      .footer-inner .right { min-width: 0; }
-    }
-    .copyright {
-      max-width: 1100px;
-      margin: 24px auto 0;
-      font-size: 11px;
-      color: var(--beige);
-      opacity: 0.7;
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div class="topbar"></div>
 
-  <header>
-    <div class="brand">合同会社 Ibu-Ibu</div>
-    <div class="for-tag">自治体ご担当者様向け</div>
+  <!-- ============ ヘッダー ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo"><span class="logo__co">合同会社</span>Ibu<span>-</span>Ibu</a>
+      <nav class="nav">
+        <a href="#business">事業</a>
+        <a href="#intro">想い</a>
+        <a href="#profile">代表</a>
+        <a href="#contact" class="btn btn--primary">お問い合わせ</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <h1>
-      <span class="kicker">地域クリエイターを育成</span>
-      <span class="main"><span class="xx">XX</span> Creative Hub</span>
-    </h1>
+  <main id="top">
 
-    <div class="catch">
-      「地元を一番知っている住民」を、<br />
-      「地元を発信するクリエイター」に育てます。
+    <!-- ============ ヒーロー（全面・空写真）============ -->
+    <!-- 背景写真は images/hero-sky.jpg。差し替えたい時はこのファイルを上書きするだけ -->
+    <section class="hero-full">
+      <div class="hero-full__overlay"></div>
+      <div class="hero-full__inner">
+        <h1 class="hero-full__title">AIと発信で、<br>地域に挑戦を増やす。</h1>
+        <p class="hero-full__en">EMPOWER LOCAL CHALLENGES.<br>WITH AI &amp; CREATIVITY.</p>
+      </div>
+    </section>
+
+    <!-- ============ 想い（青グラデ＋縦英字＋写真コラージュ）============ -->
+    <section class="intro" id="intro">
+      <div class="intro__panel">
+        <span class="intro__vertical">EMPOWER THE FIRST STEP.</span>
+        <div class="intro__body">
+          <h2 class="intro__title">最初の一歩を、<br>いちばん軽く。</h2>
+          <p>
+            新しいことの最初の一歩は、いちばん重い。<br>
+            AIも、発信も、地域での挑戦も——その一歩を、できるだけ軽く、できるだけ楽しく。
+          </p>
+          <p>
+            挑戦するひとが増えれば、地域はもっと面白くなる。<br>
+            Ibu-Ibuは、その最初の一歩の隣に、ずっと伴走します。
+          </p>
+          <div class="hero__cta" style="margin-top:3rem;">
+            <a href="#contact" class="btn btn--white">ご相談・お問い合わせ</a>
+          </div>
+        </div>
+      </div>
+      <div class="intro__photo">
+        <img src="images/mind-family.jpg" alt="子どもの最初の一歩を、親が手を広げて応援するイメージ">
+      </div>
+    </section>
+
+    <!-- ============ 事業2軸 ============ -->
+    <section class="section" id="business">
+      <div class="container">
+        <span class="eyebrow">Our Business</span>
+        <h2 class="section-title">2つの軸で、地域の挑戦を支えます</h2>
+        <p class="section-lead">「AI活用支援」と「クリエイティブハブ」。どちらも、最初の一歩を軽くするための伴走です。</p>
+
+        <div class="biz-grid">
+          <!-- 事業1 -->
+          <article class="biz-card">
+            <img class="biz-card__img" src="images/biz-ai.jpg" alt="AI活用支援・相談のようす">
+            <div class="biz-card__body">
+              <span class="biz-card__no">01 / AI SUPPORT</span>
+              <h3>AI活用支援</h3>
+              <p>「むずかしそう」を「使えた！」に。AIで、地域の成長を加速します。</p>
+              <ul>
+                <li>企業の業務改善・社内AI活用支援</li>
+                <li>自治体職員向け研修</li>
+                <li>はじめての方向けAI講座・登壇</li>
+                <li>商業施設・自治体向け 親子AI体験イベントの企画・運営</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 事業2 -->
+          <article class="biz-card">
+            <img class="biz-card__img" src="images/biz-hub.jpg" alt="地域の人が集まるクリエイティブハブのイメージ">
+            <div class="biz-card__body">
+              <span class="biz-card__no">02 / CREATIVE HUB</span>
+              <h3>地域クリエイターの育成</h3>
+              <p>
+                「この地域から、発信したい」「いつか、つくる側になりたい」。——でも、最初の一歩が、いちばん重い。
+                わたしたちは、地域に“自分の手でつくって、発信できる人”を増やします。いわば、地域の“市民クリエイター”。
+              </p>
+              <ul>
+                <li>無料で踏み出せる入口</li>
+                <li>現役プロの伴走</li>
+                <li>地域の本物の仕事へ</li>
+              </ul>
+              <p style="margin-top:1.8rem;">
+                育てているのは「動画」ではなく「人」。
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ クリエイターが育つ仕組み（循環図）============ -->
+    <section class="section" id="cycle">
+      <div class="container">
+        <span class="eyebrow">Quality</span>
+        <h2 class="section-title">プロ品質を、地域から。</h2>
+        <p class="section-lead">企業からの案件は、まずIbu-Ibuが窓口として受けます。進行管理・営業を担い、元テレビ局など第一線のパートナーと協働して、企画から納品まで責任を持つ体制です。その制作チームに地域の“市民クリエイター”が加わり、本物の仕事で力をつけていく。クライアントには確かなプロ品質を、地域は新しい挑戦の機会を——同時に手にできます。</p>
+
+        <div class="cycle-figure">
+          <img src="images/cycle-diagram.png" alt="地域クリエイターが育つ循環図：踏み出す（市民クリエイター）→ 育つ（プロチームで制作）→ 活躍する（地域の本物の仕事へ）→ 還元する（次の挑戦者を育てる）。中心はプロが品質を保証（元TV等のパートナー／進行管理・営業：Ibu-Ibu）。">
+        </div>
+
+        <p class="cycle-note">市民クリエイターが、プロの伴走で力をつけ、地域の本物の仕事で活躍し、やがて次の挑戦者を育てる側へ。挑戦が、次の挑戦を生む循環を、地域に。</p>
+      </div>
+    </section>
+
+    <!-- ============ 代表プロフィール ============ -->
+    <section class="section" id="profile">
+      <div class="container">
+        <span class="eyebrow">Representative</span>
+        <h2 class="section-title">代表プロフィール</h2>
+
+        <div class="profile">
+          <img class="profile__photo" src="images/profile-igata.jpg" alt="合同会社Ibu-Ibu 代表 井形 彩（いがた さやか）" width="160" height="160" />
+          <div>
+            <p class="profile__name">井形 彩（いがた さやか）</p>
+            <p class="profile__role">合同会社Ibu-Ibu 代表</p>
+            <p>
+              リクルートで9年、人材・企画に携わったのち、インドネシアの食品会社でマネジメントを経験。
+              帰国後は訪日マーケティングに従事し、2026年に合同会社Ibu-Ibuを設立。
+              「三方よし」の設計と、最後まで伴走するスタイルが信条。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ 発信（note / SNS）============ -->
+    <section class="section" id="channels">
+      <div class="container">
+        <span class="eyebrow">Follow Us</span>
+        <h2 class="section-title">発信しています</h2>
+        <p class="section-lead">AI活用や地域の挑戦のことを、note・SNSで発信しています。</p>
+
+        <div class="channels">
+          <a href="https://www.instagram.com/ebina_channel/" target="_blank" rel="noopener" class="channel">
+            <div class="channel__name">Instagram</div>
+            <p class="channel__sub">EBINA CHANNEL</p>
+            <p>海老名に縁のある駆け出しクリエイターで、海老名エリアの魅力を発信中！</p>
+          </a>
+          <a href="https://note.com/ibu2_sayakaigata" target="_blank" rel="noopener" class="channel">
+            <div class="channel__name">note</div>
+            <p>考えていること・現場のことを記事で。</p>
+          </a>
+          <div class="channel channel--line">
+            <div class="channel__name">LINE</div>
+            <p class="channel__sub">おやこAIラボ</p>
+            <p>友だち追加はこちらのQRから。</p>
+            <img class="channel__qr" src="https://qr-official.line.me/gs/M_966tgtdd_GW.png" alt="おやこAIラボ LINE友だち追加QRコード" width="124" height="124" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ お問い合わせ ============ -->
+    <section class="section section--tint" id="contact">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-title">お問い合わせ</h2>
+        <p class="section-lead">研修・登壇のご依頼、クリエイティブハブ、取材など、お気軽にご相談ください。</p>
+
+        <div class="contact-wrap contact-wrap--mail">
+          <p class="contact-mail-lead">下記メールアドレスまで、お気軽にご連絡ください。</p>
+          <a class="btn btn--primary" href="mailto:s.igata@ibu-ibu.com?subject=お問い合わせ（Ibu-Ibu公式サイトより）">メールで問い合わせる</a>
+          <p class="contact-mail-addr"><a href="mailto:s.igata@ibu-ibu.com">s.igata@ibu-ibu.com</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ フッター（会社概要）============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <div class="footer__logo">Ibu-Ibu LLC</div>
+          <p style="font-size:1.4rem;">AIと発信で、地域に挑戦を増やす。</p>
+        </div>
+        <dl>
+          <dt>会社名</dt><dd>合同会社Ibu-Ibu</dd>
+          <dt>代表</dt><dd>井形 彩（いがた さやか）</dd>
+          <dt>設立</dt><dd>2026年</dd>
+          <dt>事業内容</dt><dd>AI活用支援／クリエイティブハブ（人材育成・発信支援）</dd>
+          <dt>お問い合わせ</dt><dd><a href="mailto:s.igata@ibu-ibu.com" style="text-decoration:underline;">s.igata@ibu-ibu.com</a></dd>
+        </dl>
+      </div>
+      <div class="footer__bottom">© 2026 Ibu-Ibu LLC. All rights reserved.</div>
     </div>
-
-    <p class="lead">
-      ワークショップ・地元ファンアカウントの運営・編集会議・案件振り分けまでをワンセットでご提供。
-      <br />
-      "続けられて、育っていく" 地域クリエイターコミュニティを、貴自治体エリアにも。
-    </p>
-  </div>
-
-  <!-- 自治体価値 -->
-  <section>
-    <div class="section-label">VALUE FOR MUNICIPALITY</div>
-    <h2 class="section-title">自治体にとっての価値</h2>
-    <div class="merits">
-      <div class="merit-card c1">
-        <span class="dot"></span>
-        <h3>住民活躍の場づくり</h3>
-        <p>地元の魅力を発信する「住民クリエイター」を育成。副業・複業の選択肢として、地域人材の活躍の場をつくります。</p>
-      </div>
-      <div class="merit-card c2">
-        <span class="dot"></span>
-        <h3>関係人口・シビックプライド</h3>
-        <p>住民自身が発信するリアルな魅力で、外からのファンと関係人口を獲得。住民の街への誇りも育てます。</p>
-      </div>
-      <div class="merit-card c3">
-        <span class="dot"></span>
-        <h3>地域経済の循環</h3>
-        <p>地元の制作案件を地元のクリエイターへ。外注費が域外に流れない、地域内でお金が回る仕組みづくり。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3つの仕組み -->
-  <section>
-    <div class="section-label">HOW IT WORKS</div>
-    <h2 class="section-title">続ける・育てる 3つの仕組み</h2>
-
-    <div class="mechs">
-      <div class="mech m1">
-        <div class="band"></div>
-        <div class="num">1</div>
-        <div class="text">
-          <h3>地元ファンアカウントを実地で運営</h3>
-          <p>ワークショップ内で「ご当地ファンアカウント（非公式）」を立ち上げ。受講者が運営し、生きた市場のフィードバックを受けながら発信スキルを磨きます。</p>
-        </div>
-        <div class="tag">実践型 ・ OJT</div>
-      </div>
-
-      <div class="mech m2">
-        <div class="band"></div>
-        <div class="num">2</div>
-        <div class="text">
-          <h3>続く・広がる仕組み</h3>
-          <p>特に駆け出しの人は一人だと挫折しやすい所、仲間と編集会議を行い、地元の魅力を発信するコンテンツを企画。続けられる仕組みでコミュニティ化していきます。</p>
-        </div>
-        <div class="tag">継続性 ・ コミュニティ</div>
-      </div>
-
-      <div class="mech m3">
-        <div class="band"></div>
-        <div class="num">3</div>
-        <div class="text">
-          <h3>クリエイターが苦手な営業に強み！案件に繋げます</h3>
-          <p>代表が営業、そして裏側にはプロ制作会社（提携パートナー）がおり、難易度に応じて受け皿を変えられ、発注側も安心です。</p>
-        </div>
-        <div class="tag">収益化 ・ 域内循環</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 海老名 CASE -->
-  <section>
-    <div class="section-label">CASE 01</div>
-    <h2 class="section-title">第1弾 海老名市での取り組み</h2>
-
-    <div class="case">
-      <div class="badge">
-        <div class="b1">EBINA</div>
-        <div class="b2">CREATIVE HUB</div>
-        <div class="b3">2 0 2 6</div>
-        <div class="b4">全 3 回 ワークショップ</div>
-      </div>
-      <div class="details">
-        <div class="row">
-          <div class="k">● 開催期間</div>
-          <div>2026年 5月 〜 6月（計3回）</div>
-        </div>
-        <div class="row">
-          <div class="k">● 会場</div>
-          <div>海老名市</div>
-        </div>
-        <div class="row">
-          <div class="k">● 対象</div>
-          <div>海老名エリア在住の地元クリエイター志望者</div>
-        </div>
-        <div class="row">
-          <div class="k">● 内容</div>
-          <div>AI / SNS / 映像 を使った発信スキル習得＋海老名ファンアカウントの実地運営</div>
-        </div>
-        <div class="row">
-          <div class="k">● 連携先</div>
-          <div>地元店舗・公園・教育機関等とのパートナーシップを順次拡大中</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section>
-    <div class="cta">
-      <h2>一緒に「地域発信のかたち」をつくりませんか？</h2>
-      <p>
-        市民向け講座・観光プロモーション・地域ブランディング案件など、<br />
-        貴自治体の課題に合わせたカスタマイズが可能です。お気軽にご相談ください。
-      </p>
-      <a class="btn" href="mailto:s.igata@ibu-ibu.com?subject=【自治体お問い合わせ】Ibu-Ibu 地域クリエイター育成事業について">
-        メールでお問い合わせ
-      </a>
-      <div class="note">（s.igata@ibu-ibu.com まで直接お送りいただいても結構です）</div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-inner">
-      <div class="left">
-        <div class="name">合同会社 Ibu-Ibu</div>
-        <div class="meta">代表 井形 彩（いがた さやか）</div>
-        <div class="desc">AI / SNS / 映像 を活用した地域クリエイター育成事業</div>
-      </div>
-      <div class="right">
-        <div class="label">CONTACT</div>
-        <div class="mail">s.igata@ibu-ibu.com</div>
-        <div class="sub">（代表メール直通）</div>
-      </div>
-    </div>
-    <div class="copyright">© Ibu-Ibu LLC. All rights reserved.</div>
   </footer>
+
 </body>
 </html>
